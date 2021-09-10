@@ -50,8 +50,8 @@ WantedBy=multi-user.target
 EOF
 
 # Create username for containers
-groupadd -g 997 chimerajr
-useradd -m -d /home/chimerajr -g chimerajr -u 997 chimerajr
+groupadd -g 900 chimerajr
+useradd -m -d /home/chimerajr -g chimerajr -u 900 chimerajr
 
 # Create Xauthority file suitable for container use
 # $XAUTHORITY is defined in install.sh
