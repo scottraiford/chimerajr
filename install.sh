@@ -1,10 +1,13 @@
 #!/usr/bin/bash
 
+# Enable writing on the root filesystem
+rw
+
 # Install git
 pacman -S git
 
 # Retrieve latest scripts for Chimera Jr.
-cd /tmp
+cd /root
 git clone https://github.com/scottraiford/chimerajr.git
 
 # Execute system-level configuration
