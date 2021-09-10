@@ -7,7 +7,7 @@ echo "Install Podman"
 pacman -S --noconfirm podman podman-docker
 
 # Configure podman to support docker.io registry
-patch /etc/containers/registries.conf data/configs/registries.conf.patch
+patch -N /etc/containers/registries.conf data/configs/registries.conf.patch
 
 # Install Portainer
 
