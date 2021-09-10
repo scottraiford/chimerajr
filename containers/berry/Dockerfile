@@ -20,7 +20,7 @@ RUN make && make install
 
 # Create nonroot user
 VOLUME /home/chimerajr
-RUN groupadd -g 900 chimerajr && useradd -m -d /home/chimerajr -g chimerajr -u 900 chimerajr
+RUN addgroup -g 900 chimerajr && adduser -h /home/chimerajr -G chimerajr -u 900 -D chimerajr
 
 USER chimerajr
 
