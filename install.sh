@@ -1,5 +1,17 @@
 #!/usr/bin/bash
 
+echo "Beginning installation of Chimera Jr. system..."
+
+# Prompt for installation data
+echo "Gathering installation data..."
+if [ -z ${PORTAINER_ADMIN_PASSWORD+x} ]; then 
+  read -s -P "Portainer admin password: " PORTAINER_ADMIN_PASSWORD
+  export PORTAINER_ADMIN_PASSWORD
+  echo
+else
+  echo "Portainer admin password already set"
+fi
+
 # Enable writing on the root filesystem
 rw
 
