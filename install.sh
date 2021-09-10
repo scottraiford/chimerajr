@@ -5,7 +5,7 @@ echo "Beginning installation of Chimera Jr. system..."
 # Prompt for installation data
 echo "Gathering installation data..."
 if [ -z ${PORTAINER_ADMIN_PASSWORD+x} ]; then 
-  read -s -P "Portainer admin password: " PORTAINER_ADMIN_PASSWORD
+  read -s -p "Portainer admin password: " PORTAINER_ADMIN_PASSWORD
   export PORTAINER_ADMIN_PASSWORD
   echo
 else
