@@ -60,7 +60,7 @@ xauth generate :0 . trusted
 chown chimerajr:chimerajr $XAUTHORITY
 
 # Allow non-root and non-console users to run X
-echo <<EOF > /etc/X11/Xwrapper.config
+cat <<EOF > /etc/X11/Xwrapper.config
 allowed_users = anybody
 needs_root_rights = auto
 EOF
