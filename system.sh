@@ -10,6 +10,10 @@ systemctl enable --now podman.socket
 # Configure podman to support docker.io registry
 patch -N /etc/containers/registries.conf data/configs/registries.conf.patch
 
+# Remove any existing containers
+podman kill -a
+podman rm -a
+
 # Create container storage
 mkdir -p /srv/containers
 mkdir /srv/containers/portainer_data
