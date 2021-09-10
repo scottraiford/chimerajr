@@ -9,6 +9,7 @@ rw
 
 # Retrieve latest scripts for Chimera Jr.
 cd /root
+[ -d chimerajr ] && rm -rf chimerajr
 git clone https://github.com/scottraiford/chimerajr.git
 
 # Execute system-level configuration
