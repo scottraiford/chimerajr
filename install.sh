@@ -4,7 +4,8 @@
 rw
 
 # Install git
-pacman -S git
+# Git already exists in base image
+# pacman -S git
 
 # Retrieve latest scripts for Chimera Jr.
 cd /root
