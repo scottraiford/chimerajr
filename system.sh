@@ -55,6 +55,7 @@ useradd -m -d /home/chimerajr -g chimerajr -u 900 chimerajr
 
 # Create Xauthority file suitable for container use
 # $XAUTHORITY is defined in install.sh
+touch $XAUTHORITY
 xauth generate :0 . trusted
 chown chimerajr:chimerajr $XAUTHORITY
 
