@@ -41,11 +41,24 @@ AmbientCapabilities=CAP_NET_RAW
 ExecStart=/usr/bin/X -nocursor
 TimeoutStopSec=10
 KillMode=mixed
+Environment=XAUTHORITY=$XAUTHORITY
+User=chimerajr
+Group=chimerajr
 
 [Install]
 WantedBy=multi-user.target
 EOF
 
+# Create username for containers
+groupadd -g 997 chimerajr
+useradd -m -d /home/chimerajr -g chimerajr -u 997 chimerajr
+
+# Create Xauthority file suitable for container use
+# $XAUTHORITY is defined in install.sh
+xauth generate :0 . trusted
+chown chimerajr:chimerajr $XAUTHORITY
+
 # Enable X on startup
 systemctl daemon-reload
 systemctl enable --now X.service
+systemctl restart X.service
