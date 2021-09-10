@@ -2,7 +2,7 @@
 
 echo "Beginning installation of Chimera Jr. system..."
 
-# Prompt for installation data
+# Gather (or prompt for) installation data
 echo "Gathering installation data..."
 if [ -z ${PORTAINER_ADMIN_PASSWORD+x} ]; then 
   read -s -p "Portainer admin password: " PORTAINER_ADMIN_PASSWORD
@@ -11,6 +11,9 @@ if [ -z ${PORTAINER_ADMIN_PASSWORD+x} ]; then
 else
   echo "Portainer admin password already set"
 fi
+
+export XAUTHORITY=/home/chimerajr/.Xauthority
+
 
 # Enable writing on the root filesystem
 rw
