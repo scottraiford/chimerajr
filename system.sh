@@ -1,6 +1,6 @@
 #!/usr/bin/bash
 echo "Updating base system"
-pacman -Syu
+pacman -Syu --noconfirm 
 
 # Install podman with Docker compatibility
 echo "Install Podman"
