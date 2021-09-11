@@ -18,7 +18,7 @@ podman run -d --name berry -v /home/chimerajr:/home/chimerajr -v /tmp/.X11-unix/
 
 # Run Controller
 echo "Running Controller..."
-podman run -d --name controller -v /home/chimerajr:/home/chimerajr -v /tmp/.X11-unix/:/tmp/.X11-unix/ -e DISPLAY controller
+podman run -d --name controller -v /home/chimerajr:/home/chimerajr -v /tmp/.X11-unix/:/tmp/.X11-unix/ --device /dev/i2c-1 -e DISPLAY controller
 
 # Create systemd unit files to rebuild containers on startup
 echo "Creating unit files..."
