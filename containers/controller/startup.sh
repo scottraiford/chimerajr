@@ -9,4 +9,4 @@ python3 gesture-sensor.py > /tmp/gestures &
 
 # Monitor the FIFO pipe
 # Commands are sent to berryc
-su chimerajr -c "dispatcher.sh"
+su chimerajr -c "sh dispatcher.sh"
