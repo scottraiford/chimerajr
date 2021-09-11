@@ -9,9 +9,4 @@ python3 gesture-sensor.py > /tmp/gestures &
 
 # Monitor the FIFO pipe
 # Commands are sent to berryc
-while true; do
-  if read -r line ; then
-    # This will be smarter in the future... but for now, this should work.
-    berryc cycle_focus
-  fi
-done < /tmp/gestures
+su chimerajr -c "dispatcher.sh"
