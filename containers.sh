@@ -28,7 +28,7 @@ podman generate systemd -n --new -f berry
 podman generate systemd -n --new -f controller
 popd
 
-echo "Reloading and enabling systemd...
+echo "Reloading and enabling systemd..."
 systemctl daemon-reload
 systemctl enable --now container-portainer.service
 systemctl enable --now container-berry.service
