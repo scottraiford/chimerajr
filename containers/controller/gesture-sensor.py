@@ -4,6 +4,7 @@
 # Modifications For Chimera Jr.:
 #  * Restricted smbus device to always be device 1
 #  * Time variables reduced to improve response
+# Removed dependency on RPi.GPIO
 
 
 # Original file header follows:
@@ -25,15 +26,16 @@
 # For more information see https://github.com/DexterInd/GrovePi/blob/master/LICENSE
 
 import time,sys
-import RPi.GPIO as GPIO
+#import RPi.GPIO as GPIO
 import smbus
 
 # use the bus that matches your raspi version
-rev = GPIO.RPI_REVISION
-if rev == 2 or rev == 3:
-    bus = smbus.SMBus(1)
-else:
-    bus = smbus.SMBus(1)
+#rev = GPIO.RPI_REVISION
+#if rev == 2 or rev == 3:
+#    bus = smbus.SMBus(1)
+#else:
+#    bus = smbus.SMBus(0)
+bus = smbus.SMBus(1)
 
 class gesture:
 	#Registers and variables for the gesture sensor
