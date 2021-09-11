@@ -10,15 +10,15 @@ mkdir /srv/containers/portainer_data
 
 # Run Portainer
 echo "Running Portainer..."
-podman run -d -p 9000:9000 --privileged --name=portainer --restart=always -v /run/podman/podman.sock:/var/run/docker.sock:Z -v /srv/containers/portainer_data:/data portainer/portainer-ce --admin-password=$hashed
+podman run -d -p 9000:9000 --privileged --name=portainer -v /run/podman/podman.sock:/var/run/docker.sock:Z -v /srv/containers/portainer_data:/data portainer/portainer-ce --admin-password=$hashed
 
 # Run Berry
 echo "Running Berry..."
-podman run -d --name berry --restart always -v /home/chimerajr:/home/chimerajr -v /tmp/.X11-unix/:/tmp/.X11-unix/ -e DISPLAY berry
+podman run -d --name berry -v /home/chimerajr:/home/chimerajr -v /tmp/.X11-unix/:/tmp/.X11-unix/ -e DISPLAY berry
 
 # Run Controller
 echo "Running Controller..."
-podman run -d --name controller --restart always -v /home/chimerajr:/home/chimerajr -v /tmp/.X11-unix/:/tmp/.X11-unix/ -e DISPLAY controller
+podman run -d --name controller -v /home/chimerajr:/home/chimerajr -v /tmp/.X11-unix/:/tmp/.X11-unix/ -e DISPLAY controller
 
 # Create systemd unit files to rebuild containers on startup
 echo "Creating unit files..."
