@@ -11,4 +11,4 @@ RUN apk add python3 py3-pip i2c-tools xprop xrandr
 COPY . .
 
 # Run startup script
-ENTRYPOINT ["startup.sh"]
+ENTRYPOINT ["/bin/sh", "startup.sh"]
