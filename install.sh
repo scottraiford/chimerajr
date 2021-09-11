@@ -30,3 +30,4 @@ git clone https://github.com/scottraiford/chimerajr.git
 # Execute system-level configuration
 cd chimerajr
 bash ./system.sh
+bash ./containers.sh
