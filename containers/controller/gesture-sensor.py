@@ -4,7 +4,8 @@
 # Modifications For Chimera Jr.:
 #  * Restricted smbus device to always be device 1
 #  * Time variables reduced to improve response
-# Removed dependency on RPi.GPIO
+#  * Removed dependency on RPi.GPIO
+#  * Added flushing to all print statements to avoid pipe errors when output is redirected
 
 
 # Original file header follows:
@@ -354,19 +355,19 @@ class gesture:
 		data0 = self.paj7620ReadReg(0, 1)[0]
 		data1 = self.paj7620ReadReg(1, 1)[0]
 		if self.debug:
-			print("data0:",data0,"data1:",data1)
+			print("data0:",data0,"data1:",data1,flush=True)
 		if data0 != 0x20  :#or data1 <> 0x76:
-			print("Error with sensor")
+			print("Error with sensor",flush=True)
 			#return 0xff
 		if data0 == 0x20:
-			print("wake-up finish.")
+			print("wake-up finish.",flush=True)
 
 		for i in range(len(self.initRegisterArray)):
 			self.paj7620WriteReg(self.initRegisterArray[i][0],self.initRegisterArray[i][1])
 
 		self.paj7620SelectBank(self.BANK0)
 
-		print("Paj7620 initialize register finished.")
+		print("Paj7620 initialize register finished.",flush=True)
 
 	#Write a byte to a register on the Gesture sensor
 	def paj7620WriteReg(self,addr,cmd):
@@ -388,68 +389,68 @@ class gesture:
 			time.sleep(self.GES_ENTRY_TIME)
 			data=self.paj7620ReadReg(0x43, 1)[0]
 			if data == self.GES_FORWARD_FLAG:
-				print("Forward")
+				print("Forward",flush=True)
 				time.sleep(self.GES_QUIT_TIME)
 			elif data == self.GES_BACKWARD_FLAG:
-				print("Backward")
+				print("Backward",flush=True)
 				time.sleep(self.GES_QUIT_TIME)
 			else:
-				print("Right")
+				print("Right",flush=True)
 
 		elif data==self.GES_LEFT_FLAG:
 			time.sleep(self.GES_ENTRY_TIME)
 			data=self.paj7620ReadReg(0x43, 1)[0]
 			if data == self.GES_FORWARD_FLAG:
-				print("Forward")
+				print("Forward",flush=True)
 				time.sleep(self.GES_QUIT_TIME)
 			elif data == self.GES_BACKWARD_FLAG:
-				print("Backward")
+				print("Backward",flush=True)
 				time.sleep(self.GES_QUIT_TIME)
 			else:
-				print("Left")
+				print("Left",flush=True)
 
 		elif data==self.GES_UP_FLAG:
 			time.sleep(self.GES_ENTRY_TIME)
 			data=self.paj7620ReadReg(0x43, 1)[0]
 			if data == self.GES_FORWARD_FLAG:
-				print("Forward")
+				print("Forward",flush=True)
 				time.sleep(self.GES_QUIT_TIME)
 			elif data == self.GES_BACKWARD_FLAG:
-				print("Backward")
+				print("Backward",flush=True)
 				time.sleep(self.GES_QUIT_TIME)
 			else:
-				print("Up")
+				print("Up",flush=True)
 
 		elif data==self.GES_DOWN_FLAG:
 			time.sleep(self.GES_ENTRY_TIME)
 			data=self.paj7620ReadReg(0x43, 1)[0]
 			if data == self.GES_FORWARD_FLAG:
-				print("Forward")
+				print("Forward",flush=True)
 				time.sleep(self.GES_QUIT_TIME)
 			elif data == self.GES_BACKWARD_FLAG:
-				print("Backward")
+				print("Backward",flush=True)
 				time.sleep(self.GES_QUIT_TIME)
 			else:
-				print("Down")
+				print("Down",flush=True)
 
 		elif data==self.GES_FORWARD_FLAG:
-			print("Forward")
+			print("Forward",flush=True)
 			time.sleep(self.GES_QUIT_TIME)
 
 		elif data==self.GES_BACKWARD_FLAG:
-			print("Backward")
+			print("Backward",flush=True)
 			time.sleep(self.GES_QUIT_TIME)
 
 		elif data==self.GES_CLOCKWISE_FLAG:
-			print("Clockwise")
+			print("Clockwise",flush=True)
 
 		elif data==self.GES_COUNT_CLOCKWISE_FLAG:
-			print("anti-clockwise")
+			print("anti-clockwise",flush=True)
 
 		else:
 			data1=self.paj7620ReadReg(0x44, 1)[0]
 			if (data1 == self.GES_WAVE_FLAG):
-				print("wave")
+				print("wave",flush=True)
 
 	#Return a vlaue from the gestire sensor which can be used in a program
 	# 	0:nothing
