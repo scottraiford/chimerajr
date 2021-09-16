@@ -18,6 +18,9 @@ RUN git clone https://github.com/JLErvin/berry
 WORKDIR /usr/src/berry
 RUN make && make install
 
+# Remove unneeded files
+RUN apk del libx11-dev libxft-dev libxinerama-dev git make gcc libc-dev
+
 # Create nonroot user
 VOLUME /home/chimerajr
 RUN addgroup -g 900 chimerajr && adduser -h /home/chimerajr -G chimerajr -u 900 -D chimerajr
