@@ -6,8 +6,9 @@ WORKDIR /usr/src/controller
 USER root
 
 # Install dependencies
-RUN apk add python3 py3-pip i2c-tools xprop xrandr python3-dev linux-headers
+RUN apk add libx11-dev libxft-dev libxinerama-dev git make gcc libc-dev py3-pip python3-dev linux-headers python3 i2c-tools xprop xrandr xset 
 RUN pip install smbus
+RUN apk del libx11-dev libxft-dev libxinerama-dev git make gcc libc-dev py3-pip python3-dev linux-headers
 
 # Include scripts in this directory
 COPY . .
