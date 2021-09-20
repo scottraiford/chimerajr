@@ -67,3 +67,9 @@ systemctl restart X.service
 
 # Add a key to the XAuthority file
 xauth generate :0 . trusted
+
+# Enable audio device at boot
+if ! grep -q 'audio=on' /boot/config.txt; then
+  echo "# Audio (Chimera Jr.)" >> /boot/config.txt
+  echo "dtparam=audio=on" >> /boot/config.txt
+EOF
